@@ -3,14 +3,21 @@ const UserModel = require('./model');
 module.exports = function (app) {
 
     app.get('/', (req, res) => {
-        UserModel.findAll().then((users) => {
-            users.every(user => user instanceof UserModel);
-            res.status = 200;
-            res.render('user', { users });
+        UserModel.sync().then((result) => {
+
+            UserModel.findAll().then((users) => {
+                users.every(user => user instanceof UserModel);
+                res.status = 200;
+                res.render('user', { users });
+            }).catch((err) => {
+                res.status = 500;
+                res.json(err.message);
+            });
+
         }).catch((err) => {
             res.status = 500;
             res.json(err.message);
-        });
+        })
     });
 
     app.get('/createUser', (req, res) => {
