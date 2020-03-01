@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div style="width:80%; margin: 0 auto; margin-top: 25px;">
+        <a href="/createUser" class="btn btn-primary pull-right" style="margin-bottom: 10px">Create User</a>
+        <table class="table table-bordered">
+            <thead>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Place of Residence</th>
+            </thead>
+            <tbody>
+                <% for(var i=0; i<users.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%= users[i].name %>
+                        </td>
+                        <td>
+                            <%= users[i].mobile_no %>
+                        </td>
+                        <td>
+                            <%= users[i].email %>
+                        </td>
+                        <td>
+                            <%= users[i].location %>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
